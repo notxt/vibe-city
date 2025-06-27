@@ -98,7 +98,25 @@ Land value represents the desirability and economic potential of each tile, affe
 - **Base Land Value**: Each tile has an inherent value (0-10 scale)
 - **Dynamic Calculation**: Land value changes based on surrounding buildings and infrastructure
 - **Economic Impact**: Higher land value increases building costs but boosts income potential
-- **Visual Indication**: Subtle color overlay or border intensity shows land value zones
+- **Visual Indication**: Multi-layered visualization system
+
+#### Land Value Display System
+**Per-Tile Value Indicators:**
+- **Numeric Display**: Each empty tile shows its current land value (0-10) in the center
+- **Color Gradient**: Background color transitions from red (0) → yellow (5) → green (10)
+- **Opacity Levels**: Higher values have more intense colors (10% to 50% opacity)
+- **Toggle Option**: Players can show/hide land value overlay with 'V' key or UI button
+
+**Visual Representation:**
+- **Empty Tiles**: Show numeric value with colored background
+- **Occupied Tiles**: Show colored border (2px) indicating land value
+- **Hover Details**: Tooltip shows exact value and contributing factors
+- **Heat Map Mode**: Full-screen overlay showing city-wide land value patterns
+
+**Update Frequency:**
+- **Real-time Updates**: Values recalculate immediately after building placement/removal
+- **Smooth Transitions**: Animated color changes over 0.5 seconds
+- **Performance**: Batch updates for multiple tile changes
 
 #### Factors Affecting Land Value
 **Positive Influences:**
@@ -119,6 +137,35 @@ Land value represents the desirability and economic potential of each tile, affe
 - **Income Multipliers**: Commercial buildings generate 25-100% more income in premium locations
 - **Property Tax**: Higher land values generate passive income (planned)
 - **Development Pressure**: AI citizens prefer building in high-value areas (planned)
+
+#### Calculation Algorithm
+**Base Calculation:**
+1. Start with base value of 5 for all tiles
+2. Add/subtract influences from all buildings within effect radius
+3. Apply distance decay: Effect = BaseEffect * (1 - distance/maxRadius)
+4. Clamp final value between 0 and 10
+5. Round to nearest integer for display
+
+**Example Calculation:**
+```
+Tile (5,5) next to Commercial Shop:
+- Base value: 5
+- Commercial bonus: +2 (adjacent)
+- Power plant penalty: -1 (2 tiles away, 50% effect)
+- Final value: 5 + 2 - 1 = 6
+```
+
+#### Implementation Details
+**Data Structure:**
+- Store land values in separate 2D array matching grid dimensions
+- Cache calculated values, only update affected tiles
+- Track influence sources for debugging/display
+
+**UI Integration:**
+- Add land value layer between grid background and buildings
+- Use CSS classes for color gradients (land-value-0 through land-value-10)
+- Implement smooth transitions with CSS animations
+- Add toggle button to building toolbar
 
 #### Strategic Gameplay
 - **Zoning Decisions**: Players must balance industrial needs vs. residential desirability
@@ -187,6 +234,11 @@ Land value represents the desirability and economic potential of each tile, affe
 ## Future Features
 
 ### Short-term Additions
+- **Land Value System Phase 1**: Basic value display and calculation
+  - Show numeric values on empty tiles
+  - Implement color gradient backgrounds
+  - Add toggle button for overlay
+  - Calculate values based on adjacent buildings only
 - **Income System**: Automatic resource generation over time
 - **Building Upgrades**: Improve existing buildings
 - **More Building Types**: Expand construction options

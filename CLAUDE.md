@@ -45,6 +45,13 @@ This is "vibe-city", a TypeScript-based city builder web game built using only w
 - `npm run watch` - Watch TypeScript files for changes
 - `npm run clean` - Remove build output
 
+### Testing Commands
+- `npm test` - Run all tests with fast config (2s timeouts, immediate failures)
+- `npm run test:headed` - Run tests with browser visible
+- `npm run test:report` - View the last test report in browser
+- **For specific test files**: `npm test tests/land-value-system.spec.ts`
+- **Note**: Tests use fast timeouts to fail quickly when elements don't exist
+
 ## Development Workflow
 
 1. **Start Development**: `npm run dev:watch`

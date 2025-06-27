@@ -3,15 +3,23 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  forbidOnly: true,
+  retries: 0,
+  workers: 6,
+  reporter: 'list',
   use: {
     baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
+    trace: 'off',
+    video: 'off',
+    screenshot: 'off',
+    // Fast timeouts
+    actionTimeout: 2000,
+    navigationTimeout: 5000,
   },
-
+  
+  // Global test timeout
+  timeout: 10000,
+  
   projects: [
     {
       name: 'chromium',
@@ -22,6 +30,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run serve',
     url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
+    timeout: 5000,
   },
 });
