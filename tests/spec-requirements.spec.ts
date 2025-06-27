@@ -71,7 +71,7 @@ test.describe('SPEC: Resource Management (Section 14-18)', () => {
     // SPEC: "Starting Money: $10,000"
     await page.goto('/');
     
-    await expect(page.locator('#money')).toHaveText('10000');
+    await expect(page.locator('#money')).toHaveText('10,000');
   });
 
   test('REQ-RES-002: Population starts at 0', async ({ page }) => {

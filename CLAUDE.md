@@ -90,3 +90,4 @@ This is "vibe-city", a TypeScript-based city builder web game built using only w
 - **Custom dev server** built with Node.js built-ins
 - **Functional programming paradigm** throughout codebase
 - **Comprehensive type safety** with strictest TypeScript settings
+- **Browser Testing**: Tests run only in Chrome/Chromium for faster test execution (this is a "for fun" project prioritizing speed over perfect cross-browser support)
