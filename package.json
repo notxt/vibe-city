@@ -1,0 +1,38 @@
+{
+  "name": "vibe-city",
+  "version": "1.0.0",
+  "description": "A city builder web game built with TypeScript and web standards",
+  "main": "game/dist/game.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf game/dist",
+    "typecheck": "tsc --noEmit",
+    "serve": "node dev-server.js",
+    "dev": "npm run build && npm run serve",
+    "dev:watch": "npm run build && (npm run watch & npm run serve)",
+    "start": "npm run build && npm run serve",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:spec": "playwright test tests/spec-requirements.spec.ts",
+    "test:grid": "playwright test --grep '@spec-grid'",
+    "test:resources": "playwright test --grep '@spec-resources'", 
+    "test:buildings": "playwright test --grep '@spec-buildings'",
+    "test:ui": "playwright test --grep '@spec-ui'",
+    "test:critical": "playwright test --grep '@critical'",
+    "test:bugs": "playwright test --grep '@bug-found'",
+    "test:report": "playwright show-report",
+    "mcp:server": "node mcp-server.js"
+  },
+  "keywords": ["game", "city-builder", "typescript", "web"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@tsconfig/strictest": "^2.0.0",
+    "@playwright/test": "^1.40.0",
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "playwright": "^1.40.0"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe City - City Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Vibe City</h1>
+            <div class="resources">
+                <div class="resource">
+                    <span class="resource-icon">💰</span>
+                    <span id="money">10000</span>
+                </div>
+                <div class="resource">
+                    <span class="resource-icon">👥</span>
+                    <span id="population">0</span>
+                </div>
+                <div class="resource">
+                    <span class="resource-icon">⚡</span>
+                    <span id="power">0</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="game-main">
+            <div class="toolbar">
+                <h3>Buildings</h3>
+                <div class="building-buttons">
+                    <button class="building-btn" data-building="residential">
+                        <span class="building-icon">🏠</span>
+                        <span class="building-name">House</span>
+                        <span class="building-cost">$500</span>
+                    </button>
+                    <button class="building-btn" data-building="commercial">
+                        <span class="building-icon">🏢</span>
+                        <span class="building-name">Shop</span>
+                        <span class="building-cost">$1000</span>
+                    </button>
+                    <button class="building-btn" data-building="industrial">
+                        <span class="building-icon">🏭</span>
+                        <span class="building-name">Factory</span>
+                        <span class="building-cost">$2000</span>
+                    </button>
+                    <button class="building-btn" data-building="power">
+                        <span class="building-icon">⚡</span>
+                        <span class="building-name">Power Plant</span>
+                        <span class="building-cost">$5000</span>
+                    </button>
+                    <button class="building-btn" data-building="road">
+                        <span class="building-icon">🛣️</span>
+                        <span class="building-name">Road</span>
+                        <span class="building-cost">$100</span>
+                    </button>
+                </div>
+                <button id="bulldoze-btn" class="bulldoze-btn">
+                    <span class="building-icon">🚧</span>
+                    <span class="building-name">Bulldoze</span>
+                </button>
+            </div>
+            
+            <div class="game-area">
+                <div id="city-grid" class="city-grid"></div>
+            </div>
+        </div>
+        
+        <div class="game-info">
+            <div id="tile-info" class="tile-info">
+                <p>Click on a tile to see information</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dist/game.js"></script>
+</body>
+</html>
