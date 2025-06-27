@@ -35,8 +35,11 @@ This is "vibe-city", a TypeScript-based city builder web game built using only w
 - `npm run serve` - Start dev server only (if already built)
 
 ### Background Server Commands
-- `npm run build && npm run serve &` - Start dev server in background
-- `pkill -f "node dev-server.js"` - Stop background dev server
+- **IMPORTANT**: Always run long-running commands as background processes with output logged to the `log/` directory
+- `npm run build && npm run serve > log/dev-server.log 2>&1 &` - Start dev server in background with logging
+- `npm run dev:watch > log/dev-watch.log 2>&1 &` - Start dev watch mode in background with logging
+- `npm run dev:stop` - Stop all dev processes (server and TypeScript watcher)
+- `tail -f log/dev-server.log` - View dev server logs
 
 ### Utility Commands
 - `npm run watch` - Watch TypeScript files for changes

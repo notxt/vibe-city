@@ -23,7 +23,8 @@
     "test:critical": "playwright test --grep '@critical'",
     "test:bugs": "playwright test --grep '@bug-found'",
     "test:report": "playwright show-report",
-    "mcp:server": "node mcp-server.js"
+    "mcp:server": "node mcp-server.js",
+    "dev:stop": "pkill -f 'node dev-server.js' && pkill -f 'tsc --watch' || true"
   },
   "keywords": ["game", "city-builder", "typescript", "web"],
   "author": "",
