@@ -178,6 +178,7 @@ body {
     height: 24px;
     margin-bottom: 0.5rem;
     color: inherit;
+    display: block;
 }
 
 .building-name {
@@ -247,7 +248,12 @@ body {
     backdrop-filter: blur(3px);
 }
 
-.grid-cell svg {
+.grid-cell svg,
+.grid-cell house-icon,
+.grid-cell shop-icon,
+.grid-cell factory-icon,
+.grid-cell power-icon,
+.grid-cell road-icon {
     width: 16px;
     height: 16px;
     color: inherit;

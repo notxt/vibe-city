@@ -1,3 +1,6 @@
+// Import icon components
+import './components/index.js';
+
 // Type definitions
 interface Resources {
     money: number;
@@ -60,31 +63,31 @@ const GRID_CONFIG: GridConfig = {
 
 const BUILDING_TYPES: BuildingTypes = {
     residential: {
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>',
+        icon: '<house-icon></house-icon>',
         cost: 500,
         provides: { population: 4 },
         requires: { power: 1 }
     },
     commercial: {
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="14" rx="1"/><path d="M2 8l2-6h16l2 6"/><rect x="7" y="12" width="4" height="6"/><rect x="13" y="12" width="4" height="6"/><path d="M9 15h2"/><path d="M15 15h2"/></svg>',
+        icon: '<shop-icon></shop-icon>',
         cost: 1000,
         provides: { money: 100 },
         requires: { power: 2, population: 2 }
     },
     industrial: {
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="14" width="20" height="8"/><rect x="6" y="10" width="4" height="4"/><rect x="14" y="6" width="4" height="8"/><path d="M10 2v6l2-2 2 2V2"/></svg>',
+        icon: '<factory-icon></factory-icon>',
         cost: 2000,
         provides: { money: 200 },
         requires: { power: 3 }
     },
     power: {
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>',
+        icon: '<power-icon></power-icon>',
         cost: 5000,
         provides: { power: 10 },
         requires: {}
     },
     road: {
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M2 8h20"/><path d="M2 16h20"/><circle cx="7" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg>',
+        icon: '<road-icon></road-icon>',
         cost: 100,
         provides: {},
         requires: {}
@@ -484,5 +487,20 @@ const initGame = (): void => {
     updateResourceDisplay(gameState.resources);
 };
 
-// Initialize the game
-initGame();
+// Initialize the game when DOM and web components are ready
+const initializeWhenReady = async (): Promise<void> => {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
+    }
+    
+    // Wait a bit for web components to register
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    initGame();
+    
+    // Expose gameState for test debugging
+    (window as any).gameState = gameState;
+};
+
+initializeWhenReady();

@@ -48,6 +48,19 @@ This document maps game specifications to test cases, ensuring complete test cov
 | REQ-UI-004 | Hover info | `should update tile info` | ✅ | Info panel visible |
 | REQ-UI-005 | Resource display | `REQ-UI-001: Main game screen layout` | ✅ | Top bar working |
 
+## Land Value System Requirements
+
+| Req ID | Specification | Test Case | Status | Notes |
+|--------|---------------|-----------|---------|-------|
+| REQ-LAND-001 | Base land value (0-10 scale) | `REQ-LAND-001: Each tile should have base land value` | ⏳ | Ready for implementation |
+| REQ-LAND-002 | Commercial +2 adjacent value | `REQ-LAND-002: Commercial buildings should increase adjacent land value` | ⏳ | Test framework ready |
+| REQ-LAND-003 | Industrial -1 adjacent value | `REQ-LAND-003: Industrial buildings should decrease adjacent land value` | ⏳ | Test framework ready |
+| REQ-LAND-004 | Power plant -2 in 2-tile radius | `REQ-LAND-004: Power plants should create -2 land value in 2-tile radius` | ⏳ | Test framework ready |
+| REQ-LAND-005 | Building cost modifiers (10-50%) | `REQ-LAND-005: Building costs should increase in high-value areas` | ⏳ | Economic integration test |
+| REQ-LAND-006 | Visual land value indicators | `REQ-LAND-006: Land value should be visually indicated on grid` | ⏳ | UI/UX test ready |
+| REQ-LAND-007 | Road infrastructure bonuses | `REQ-LAND-007: Roads should increase nearby land values` | ⏳ | Infrastructure test ready |
+| REQ-LAND-008 | Commercial income multipliers | `REQ-LAND-008: Land value should affect commercial building income` | ⏳ | Economic gameplay test |
+
 ## Planned Features (Not Yet Implemented)
 
 | Req ID | Specification | Test Case | Status | Notes |
@@ -67,11 +80,12 @@ This document maps game specifications to test cases, ensuring complete test cov
 - **Fix Needed**: Debug game.ts resource calculation logic
 
 ### 📊 **Test Coverage Summary**
-- **Total Requirements**: 21 identified  
-- **Tested**: 16 (76%)
-- **Passing**: 9 (43%)
-- **Bug Revealed**: 7 (33%)
-- **Not Implemented**: 5 (24%)
+- **Total Requirements**: 29 identified (21 original + 8 land value)
+- **Tested**: 24 (83%)
+- **Passing**: 9 (31%)
+- **Bug Revealed**: 7 (24%)
+- **Land Value Tests Ready**: 8 (28%)
+- **Not Implemented**: 5 (17%)
 
 ## Next Steps
 
@@ -80,12 +94,19 @@ This document maps game specifications to test cases, ensuring complete test cov
    - Fix population/power calculation
    - Re-run all affected tests
 
-2. **Expand Test Coverage**
+2. **Implement Land Value System** - Priority: High
+   - Add land value calculation engine
+   - Implement visual indicators for land values
+   - Add building cost modifiers based on land value
+   - Integrate land value with commercial income multipliers
+   - All tests are ready and waiting for implementation
+
+3. **Expand Test Coverage**
    - Add edge case tests (insufficient funds, etc.)
    - Add performance tests for large grids
    - Add accessibility tests
 
-3. **Implement Planned Features**
+4. **Implement Remaining Planned Features**
    - Add tests for new features as they're developed
    - Maintain traceability matrix updates
 
