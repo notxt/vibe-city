@@ -8,68 +8,102 @@
 </head>
 <body>
     <div class="game-container">
-        <header class="game-header">
-            <h1>Vibe City</h1>
-            <div class="resources">
-                <div class="resource">
-                    <span class="resource-icon">💰</span>
-                    <span id="money">10000</span>
-                </div>
-                <div class="resource">
-                    <span class="resource-icon">👥</span>
-                    <span id="population">0</span>
-                </div>
-                <div class="resource">
-                    <span class="resource-icon">⚡</span>
-                    <span id="power">0</span>
-                </div>
-            </div>
-        </header>
-        
         <div class="game-main">
             <div class="toolbar">
-                <h3>Buildings</h3>
                 <div class="building-buttons">
                     <button class="building-btn" data-building="residential">
-                        <span class="building-icon">🏠</span>
+                        <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
                         <span class="building-name">House</span>
                         <span class="building-cost">$500</span>
                     </button>
                     <button class="building-btn" data-building="commercial">
-                        <span class="building-icon">🏢</span>
+                        <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="8" width="16" height="14" rx="1"/>
+                            <path d="M2 8l2-6h16l2 6"/>
+                            <rect x="7" y="12" width="4" height="6"/>
+                            <rect x="13" y="12" width="4" height="6"/>
+                            <path d="M9 15h2"/>
+                            <path d="M15 15h2"/>
+                        </svg>
                         <span class="building-name">Shop</span>
                         <span class="building-cost">$1000</span>
                     </button>
                     <button class="building-btn" data-building="industrial">
-                        <span class="building-icon">🏭</span>
+                        <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="14" width="20" height="8"/>
+                            <rect x="6" y="10" width="4" height="4"/>
+                            <rect x="14" y="6" width="4" height="8"/>
+                            <path d="M10 2v6l2-2 2 2V2"/>
+                        </svg>
                         <span class="building-name">Factory</span>
                         <span class="building-cost">$2000</span>
                     </button>
                     <button class="building-btn" data-building="power">
-                        <span class="building-icon">⚡</span>
+                        <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                        </svg>
                         <span class="building-name">Power Plant</span>
                         <span class="building-cost">$5000</span>
                     </button>
                     <button class="building-btn" data-building="road">
-                        <span class="building-icon">🛣️</span>
+                        <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 12h20"/>
+                            <path d="M2 8h20"/>
+                            <path d="M2 16h20"/>
+                            <circle cx="7" cy="12" r="1" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                            <circle cx="17" cy="12" r="1" fill="currentColor"/>
+                        </svg>
                         <span class="building-name">Road</span>
                         <span class="building-cost">$100</span>
                     </button>
                 </div>
                 <button id="bulldoze-btn" class="bulldoze-btn">
-                    <span class="building-icon">🚧</span>
+                    <svg class="building-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="10" width="14" height="6" rx="1"/>
+                        <rect x="4" y="6" width="6" height="4" rx="1"/>
+                        <circle cx="6" cy="18" r="2"/>
+                        <circle cx="12" cy="18" r="2"/>
+                        <path d="M16 13l6-3v6l-6-3z"/>
+                        <line x1="2" y1="13" x2="1" y2="13"/>
+                    </svg>
                     <span class="building-name">Bulldoze</span>
                 </button>
             </div>
             
             <div class="game-area">
+                <div class="resources">
+                    <div class="resource">
+                        <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                        </svg>
+                        <span id="money">10000</span>
+                    </div>
+                    <div class="resource">
+                        <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span id="population">0</span>
+                    </div>
+                    <div class="resource">
+                        <svg class="resource-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+                        </svg>
+                        <span id="power">0</span>
+                    </div>
+                </div>
                 <div id="city-grid" class="city-grid"></div>
-            </div>
-        </div>
-        
-        <div class="game-info">
-            <div id="tile-info" class="tile-info">
-                <p>Click on a tile to see information</p>
+                <div class="game-info">
+                    <div id="tile-info" class="tile-info">
+                        <p>Click on a tile to see information</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

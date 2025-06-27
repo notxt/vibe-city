@@ -60,31 +60,31 @@ const GRID_CONFIG: GridConfig = {
 
 const BUILDING_TYPES: BuildingTypes = {
     residential: {
-        icon: '🏠',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>',
         cost: 500,
         provides: { population: 4 },
         requires: { power: 1 }
     },
     commercial: {
-        icon: '🏢',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="14" rx="1"/><path d="M2 8l2-6h16l2 6"/><rect x="7" y="12" width="4" height="6"/><rect x="13" y="12" width="4" height="6"/><path d="M9 15h2"/><path d="M15 15h2"/></svg>',
         cost: 1000,
         provides: { money: 100 },
         requires: { power: 2, population: 2 }
     },
     industrial: {
-        icon: '🏭',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="14" width="20" height="8"/><rect x="6" y="10" width="4" height="4"/><rect x="14" y="6" width="4" height="8"/><path d="M10 2v6l2-2 2 2V2"/></svg>',
         cost: 2000,
         provides: { money: 200 },
         requires: { power: 3 }
     },
     power: {
-        icon: '⚡',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>',
         cost: 5000,
         provides: { power: 10 },
         requires: {}
     },
     road: {
-        icon: '🛣️',
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M2 8h20"/><path d="M2 16h20"/><circle cx="7" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg>',
         cost: 100,
         provides: {},
         requires: {}
@@ -195,10 +195,13 @@ const placeBuilding = (
     newCell.type = buildingType;
     newCell.building = { ...building };
     
+    const updatedResources = updateResources(newGrid);
+    updatedResources.money = resources.money - building.cost;
+    
     return { 
         success: true, 
         grid: newGrid, 
-        resources: updateResources(newGrid)
+        resources: updatedResources
     };
 };
 
@@ -290,13 +293,14 @@ const updateButtonStates = (gameState: GameState): void => {
 };
 
 const updateCellElement = (cell: GridCell): void => {
-    cell.element.textContent = cell.building ? cell.building.icon : '';
+    cell.element.innerHTML = cell.building ? cell.building.icon : '';
     cell.element.className = 'grid-cell';
     
     if (cell.type !== 'empty') {
-        cell.element.classList.add('building');
         if (cell.type === 'road') {
             cell.element.classList.add('road');
+        } else {
+            cell.element.classList.add('building', cell.type);
         }
     }
 };
