@@ -61,8 +61,10 @@ test.describe('SPEC: Grid System (Section 8-12)', () => {
     await page.click('.grid-cell[data-x="5"][data-y="5"]');
     
     // Should refund $250 (50% of $500)
-    // Note: Currently testing visual placement, money mechanics need fixing
-    await expect(page.locator('.grid-cell[data-x="5"][data-y="5"]')).toHaveText('');
+    // Cell should now show land value (no building icon)
+    await expect(page.locator('.grid-cell[data-x="5"][data-y="5"] house-icon')).not.toBeVisible();
+    // Land value should still be displayed
+    await expect(page.locator('.grid-cell[data-x="5"][data-y="5"] .land-value')).toBeVisible();
   });
 });
 

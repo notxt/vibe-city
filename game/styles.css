@@ -379,3 +379,67 @@ body {
         font-size: 16px;
     }
 }
+
+/* Land Value System Styles */
+.land-value {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Land value overlay for occupied tiles */
+.land-value-overlay {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 3px;
+    line-height: 1;
+    min-width: 12px;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Make grid cells position relative for overlay positioning */
+.grid-cell {
+    position: relative;
+}
+
+/* Land value color gradients (0-10 scale) */
+.land-value-0, .grid-cell.land-value-0 { background-color: rgba(139, 0, 0, 0.3); }
+.land-value-1, .grid-cell.land-value-1 { background-color: rgba(178, 34, 34, 0.3); }
+.land-value-2, .grid-cell.land-value-2 { background-color: rgba(205, 92, 92, 0.3); }
+.land-value-3, .grid-cell.land-value-3 { background-color: rgba(255, 140, 0, 0.3); }
+.land-value-4, .grid-cell.land-value-4 { background-color: rgba(255, 165, 0, 0.3); }
+.land-value-5, .grid-cell.land-value-5 { background-color: rgba(255, 215, 0, 0.3); }
+.land-value-6, .grid-cell.land-value-6 { background-color: rgba(173, 255, 47, 0.3); }
+.land-value-7, .grid-cell.land-value-7 { background-color: rgba(124, 252, 0, 0.3); }
+.land-value-8, .grid-cell.land-value-8 { background-color: rgba(50, 205, 50, 0.3); }
+.land-value-9, .grid-cell.land-value-9 { background-color: rgba(34, 139, 34, 0.3); }
+.land-value-10, .grid-cell.land-value-10 { background-color: rgba(0, 100, 0, 0.3); }
+
+/* Land value borders for occupied tiles */
+.land-value-border-0 { border: 2px solid #8B0000; }
+.land-value-border-1 { border: 2px solid #B22222; }
+.land-value-border-2 { border: 2px solid #CD5C5C; }
+.land-value-border-3 { border: 2px solid #FF8C00; }
+.land-value-border-4 { border: 2px solid #FFA500; }
+.land-value-border-5 { border: 2px solid #FFD700; }
+.land-value-border-6 { border: 2px solid #ADFF2F; }
+.land-value-border-7 { border: 2px solid #7CFC00; }
+.land-value-border-8 { border: 2px solid #32CD32; }
+.land-value-border-9 { border: 2px solid #228B22; }
+.land-value-border-10 { border: 2px solid #006400; }

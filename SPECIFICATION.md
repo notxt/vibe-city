@@ -101,22 +101,22 @@ Land value represents the desirability and economic potential of each tile, affe
 - **Visual Indication**: Multi-layered visualization system
 
 #### Land Value Display System
-**Per-Tile Value Indicators:**
-- **Numeric Display**: Each empty tile shows its current land value (0-10) in the center
-- **Color Gradient**: Background color transitions from red (0) → yellow (5) → green (10)
-- **Opacity Levels**: Higher values have more intense colors (10% to 50% opacity)
-- **Toggle Option**: Players can show/hide land value overlay with 'V' key or UI button
+**Always-Visible Land Values:**
+- **Empty Tiles**: Show numeric land value (0-10) in center with color gradient background
+- **Occupied Tiles**: Show building icon with small land value overlay in bottom-right corner
+- **Color Gradient**: Background transitions from red (0) → yellow (5) → green (10) 
+- **No Toggle Required**: Land values are permanently visible for optimal gameplay clarity
 
 **Visual Representation:**
-- **Empty Tiles**: Show numeric value with colored background
-- **Occupied Tiles**: Show colored border (2px) indicating land value
-- **Hover Details**: Tooltip shows exact value and contributing factors
-- **Heat Map Mode**: Full-screen overlay showing city-wide land value patterns
+- **Empty Tiles**: Large numeric display with full background coloring
+- **Occupied Tiles**: Building icon + small numeric overlay (10px badge style)
+- **Colored Borders**: 2px colored borders on occupied tiles indicating land value
+- **Hover Details**: Tooltip shows exact value and contributing factors (planned)
 
 **Update Frequency:**
 - **Real-time Updates**: Values recalculate immediately after building placement/removal
-- **Smooth Transitions**: Animated color changes over 0.5 seconds
-- **Performance**: Batch updates for multiple tile changes
+- **Smooth Transitions**: Animated color changes over 0.3 seconds
+- **Performance**: Efficient batch updates for multiple tile changes
 
 #### Factors Affecting Land Value
 **Positive Influences:**
@@ -157,15 +157,16 @@ Tile (5,5) next to Commercial Shop:
 
 #### Implementation Details
 **Data Structure:**
-- Store land values in separate 2D array matching grid dimensions
-- Cache calculated values, only update affected tiles
-- Track influence sources for debugging/display
+- Store land values as `landValue` property in each GridCell
+- Calculate values dynamically based on nearby building influences
+- Update all affected tiles when buildings are placed/removed
 
 **UI Integration:**
-- Add land value layer between grid background and buildings
+- Empty tiles: Full background coloring with centered numeric display
+- Occupied tiles: CSS positioned overlay (`.land-value-overlay`) in bottom-right
 - Use CSS classes for color gradients (land-value-0 through land-value-10)
-- Implement smooth transitions with CSS animations
-- Add toggle button to building toolbar
+- Colored borders on occupied tiles (land-value-border-0 through land-value-border-10)
+- Smooth CSS transitions for value changes
 
 #### Strategic Gameplay
 - **Zoning Decisions**: Players must balance industrial needs vs. residential desirability
@@ -234,11 +235,11 @@ Tile (5,5) next to Commercial Shop:
 ## Future Features
 
 ### Short-term Additions
-- **Land Value System Phase 1**: Basic value display and calculation
-  - Show numeric values on empty tiles
-  - Implement color gradient backgrounds
-  - Add toggle button for overlay
-  - Calculate values based on adjacent buildings only
+- **Land Value System Phase 1**: ✅ COMPLETED
+  - ✅ Show numeric values on all tiles (empty + occupied overlay)
+  - ✅ Implement color gradient backgrounds
+  - ✅ Always-visible display (no toggle needed)
+  - ✅ Calculate values based on building influence and distance decay
 - **Income System**: Automatic resource generation over time
 - **Building Upgrades**: Improve existing buildings
 - **More Building Types**: Expand construction options
